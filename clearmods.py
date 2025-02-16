@@ -1,11 +1,8 @@
 import os 
 import tkinter as tk
 import platform
-import tkinter.filedialog
 from tkinter.filedialog import askopenfilename
 from tkinter import messagebox
-import subprocess
-
 
 root = tk.Tk()
 root.withdraw()
