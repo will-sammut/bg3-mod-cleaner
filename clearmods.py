@@ -1,15 +1,39 @@
 import os 
+import tkinter as tk
+import platform
+import tkinter.filedialog
+from tkinter.filedialog import askopenfilename
+from tkinter import messagebox
+import subprocess
 
-with open("modlist.txt") as modlist:
 
-    # Replace with the path to your BG3 installation.
-    # e.g. /mnt/g/Steam/steamapps/common/Baldurs Gate 3/
+root = tk.Tk()
+root.withdraw()
 
-    installPath = ''
+# Show the message box
+Result0 = messagebox.showinfo("BG3 Mod Cleaner", "Please open the modlist file.")
 
-    for mod in modlist:
-        ModPath = installPath.rstrip() + mod.rstrip().replace("\\", "/")
-        
-        os.remove(ModPath)
-        print(f"removed {ModPath}")
+if Result0 == 'ok':
+    File = tk.filedialog.askopenfile()
+    with open(File.name) as modlist:
 
+        Result1 = messagebox.showinfo("BG3 Mod Cleaner", "Please select your Baldur's Gate 3 installation path\n  e.g. \nSteam/steamapps/common/Baldurs Gate 3/")
+        if Result1 == 'ok':
+            installPath = tk.filedialog.askdirectory()
+
+            for mod in modlist:
+                if platform.system() == 'Windows':
+                    ModPath = installPath.rstrip() + mod.rstrip().replace("\\", "/")
+                else:
+                    ModPath = installPath.rstrip() + mod.rstrip()
+
+                try:
+                    os.remove(ModPath)
+                    print(f"removing {ModPath}....OK")
+                except FileNotFoundError:
+                    print(f"removing {ModPath}....NOT FOUND")
+
+            messagebox.showinfo("BG3 Mod Cleaner", "Done.")
+
+# Run the Tkinter event loop
+root.mainloop()
