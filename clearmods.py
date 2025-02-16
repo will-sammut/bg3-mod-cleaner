@@ -1,11 +1,15 @@
 import os 
 
 with open("modlist.txt") as modlist:
-    rootPath = '/mnt/g/Steam/steamapps/common/Baldurs Gate 3/'
+
+    # Replace with the path to your BG3 installation.
+    # e.g. /mnt/g/Steam/steamapps/common/Baldurs Gate 3/
+
+    installPath = ''
 
     for mod in modlist:
-        Path = rootPath.rstrip() + mod.rstrip().replace("\\", "/")
+        ModPath = installPath.rstrip() + mod.rstrip().replace("\\", "/")
         
-        os.remove(Path)
-        print(f"removed {Path}")
+        os.remove(ModPath)
+        print(f"removed {ModPath}")
 
