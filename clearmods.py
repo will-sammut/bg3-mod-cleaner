@@ -13,11 +13,13 @@ with open(File) as modlist:
     for mod in modlist:
         ModPath = installPath.rstrip() + mod.rstrip()
 
-        print(ModPath)
+        print(f"Found {ModPath}...")
         try:
             path = Path(ModPath)
-            print(f"removing {path.parent}...OK")
-            shutil.rmtree(path.parent)
+
+            Confirmation = input(f"Are you sure you want to delete the following directory and all its contents? (y/n)\n\n{path.parent}/\n")
+            if Confirmation == 'y':
+                shutil.rmtree(path.parent)
         except FileNotFoundError:
             print(f"removing {ModPath}....NOT FOUND\n")
 
