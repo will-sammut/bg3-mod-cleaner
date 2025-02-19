@@ -23,5 +23,5 @@ with open(File) as modlist:
         except FileNotFoundError:
             print(f"removing {ModPath}....NOT FOUND\n")
 
-        print("\n\n....DONE")
+    print("\n\n....DONE")
 
