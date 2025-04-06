@@ -1,7 +1,6 @@
-import os 
 import platform
-from pathlib import Path
 import shutil
+from pathlib import Path
 
 print(f"OS: {platform.system()}")
 
