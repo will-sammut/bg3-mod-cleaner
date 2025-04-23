@@ -22,5 +22,5 @@ with open(File) as modlist:
         except FileNotFoundError:
             print(f"removing {ModPath}....NOT FOUND\n")
 
-    print("\n\n....DONE")
+    print("\n\n....Done! \n\n Remember to verify your game files via Steam to restore any missing files.\n\n") 
 
